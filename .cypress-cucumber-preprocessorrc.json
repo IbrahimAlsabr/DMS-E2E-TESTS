@@ -1,0 +1,8 @@
+{
+	"stepDefinitions": "cypress/e2e/steps_definitions/**/*.ts",
+	"nonGlobalStepDefinitions": true,
+	"json": {
+		"enabled": true,
+		"output": "cypress/cucumber-json/cucumber.json"
+	}
+}

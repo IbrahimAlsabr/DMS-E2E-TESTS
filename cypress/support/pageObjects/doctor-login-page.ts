@@ -31,7 +31,4 @@ export class DoctorLoginPage {
 	clickLoginButton() {
 		this.loginButton.click();
 	}
-
-
-
 }
