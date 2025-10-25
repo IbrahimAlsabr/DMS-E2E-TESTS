@@ -74,18 +74,22 @@ export class DoctorSignupPage {
 	}
 
 	visit() {
+		cy.clearLocalStorage();
 		cy.visit('/doctor-signup');
 	}
 
 	fillEmail(email: string) {
+		this.emailInput.clear();
 		this.emailInput.type(email);
 	}
 
 	fillPassword(password: string) {
+		this.passwordInput.clear();
 		this.passwordInput.type(password);
 	}
 
 	fillConfirmPassword(confirmPassword: string) {
+		this.confirmPasswordInput.clear();
 		this.confirmPasswordInput.type(confirmPassword);
 	}
 
