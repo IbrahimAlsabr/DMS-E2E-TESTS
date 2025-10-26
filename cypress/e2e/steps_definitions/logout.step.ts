@@ -1,30 +1,14 @@
-import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { DoctorLogoutPage } from '../../support/pageObjects/doctor-logout-page';
-import { DoctorLoginPage } from '../../support/pageObjects/doctor-login-page';
+import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
+import { DoctorLogoutPage } from '../../support/pageObjects/LogoutPage';
 
 const doctorLogoutPage = new DoctorLogoutPage();
-const doctorLoginPage = new DoctorLoginPage();
 
-Given('the doctor is logged in', () => {
-	doctorLoginPage.visit();
-	doctorLoginPage.fillEmail('doctor@dms.com');
-	doctorLoginPage.fillPassword('Qwerty123!');
-	doctorLoginPage.clickLoginButton();
-	cy.url().should('include', '/doctor-dashboard');
-});
-
-When('doctor clicks on the logout button in the sidebar', () => {
+When('the doctor logs out of the system', () => {
 	doctorLogoutPage.clickLogout();
-});
-
-Then('doctor should see the confirm logout button', () => {
 	doctorLogoutPage.confirmLogoutButton.should('be.visible');
-});
-
-When('doctor clicks on the confirm logout button', () => {
 	doctorLogoutPage.clickConfirmLogout();
 });
 
-Then('doctor should see the login page after logout', () => {
+Then('the doctor should be redirected to the login page', () => {
 	cy.url().should('include', '/doctor-login');
 });

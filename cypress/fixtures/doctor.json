@@ -1,0 +1,12 @@
+{
+	"email": "doctor21212@dms.com",
+	"password": "SecurePass123!",
+	"confirmPassword": "SecurePass123!",
+	"firstName": "Dr. Ahmed",
+	"lastName": "Hassan",
+	"gender": "ذكر",
+	"dateOfBirth": "1985-06-15",
+	"specialty": "الطب الباطني",
+	"phoneNumber": "+966501234567",
+	"bio": "Experienced internal medicine specialist with 10 years of practice"
+}

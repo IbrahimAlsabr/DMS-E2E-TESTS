@@ -1,0 +1,19 @@
+{
+	"firstName": "John",
+	"lastName": "Doe",
+	"dateOfBirth": "1990-01-01",
+	"gender": "ذكر",
+	"maritalStatus": "أعزب",
+	"phoneNumber": "1234567890",
+	"address": "123 Main St, Anytown, USA",
+	"work": "Software Engineer",
+	"bloodType": "A+",
+	"hasBloodPressure": "نعم",
+	"isSmokeYes": "Yes",
+	"numberOfSmokes": "10",
+	"isAlcoholYes": "Yes",
+	"dailyDrinks": "2",
+	"medicalHistory": "لا يوجد",
+	"allergies": "لا يوجد",
+	"medications": "لا يوجد"
+}

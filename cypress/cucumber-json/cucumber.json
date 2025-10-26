@@ -1,0 +1,186 @@
+[
+  {
+    "description": "\tAs a healthcare professional\n\tI want to create an account, log out, and log back in\n\tSo that I can securely access the medical system",
+    "elements": [
+      {
+        "description": "",
+        "id": "doctor-account-lifecycle-management;complete-doctor-account-lifecycle",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Complete doctor account lifecycle",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the doctor is on the signup page",
+            "match": {
+              "location": "not available:0"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2481000000
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Field",
+                      "Value"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Email",
+                      "doctor.22@dms.com"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Password",
+                      "SecurePass123!"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Confirm Password",
+                      "SecurePass123!"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "First Name",
+                      "Dr. Ahmed"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Last Name",
+                      "Hassan"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Gender",
+                      "ذكر"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Date of Birth",
+                      "1985-06-15"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Specialty",
+                      "الطب الباطني"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Phone Number",
+                      "+966501234567"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Bio",
+                      "Experienced internal medicine specialist with 10 years of practice"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 8,
+            "name": "the doctor completes the full registration process with:",
+            "match": {
+              "location": "not available:0"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11316000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "the doctor should be successfully registered and redirected to dashboard",
+            "match": {
+              "location": "not available:0"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7317000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "the doctor logs out of the system",
+            "match": {
+              "location": "not available:0"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 650000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "the doctor should be redirected to the login page",
+            "match": {
+              "location": "not available:0"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 188000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 28,
+            "name": "the doctor logs back in with the same credentials email \"doctor.22@dms.com\" and password \"SecurePass123!\":",
+            "match": {
+              "location": "not available:0"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2239000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "the doctor should be successfully authenticated and see the dashboard",
+            "match": {
+              "location": "not available:0"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 268000000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "doctor-account-lifecycle-management",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Doctor Account Lifecycle Management",
+    "tags": [],
+    "uri": "cypress\\e2e\\features\\doctor-lifecycle.feature"
+  }
+]

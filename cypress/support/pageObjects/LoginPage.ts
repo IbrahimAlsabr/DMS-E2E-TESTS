@@ -17,14 +17,18 @@ export class DoctorLoginPage {
 	}
 
 	visit() {
+		cy.clearCookies();
+		cy.clearLocalStorage();
 		cy.visit('/doctor-login');
 	}
 
 	fillEmail(email: string) {
+		this.emailInput.clear();
 		this.emailInput.type(email);
 	}
 
 	fillPassword(password: string) {
+		this.passwordInput.clear();
 		this.passwordInput.type(password);
 	}
 

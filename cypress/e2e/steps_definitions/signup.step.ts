@@ -1,53 +1,56 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { DoctorSignupPage } from '../../support/pageObjects/doctor-signup-page';
+import { DoctorSignupPage } from '../../support/pageObjects/SignupPage';
+import { DoctorLoginPage } from '../../support/pageObjects/LoginPage';
 
 const doctorSignupPage = new DoctorSignupPage();
+const doctorLoginPage = new DoctorLoginPage();
+
 
 Given('the doctor is on the signup page', () => {
 	doctorSignupPage.visit();
 });
 
-When("the doctor enters email {string} and password {string} and confirm password {string}", (email: string, password: string, confirmPassword: string) => {
-	doctorSignupPage.fillEmail(email);
-	doctorSignupPage.fillPassword(password);
-	doctorSignupPage.fillConfirmPassword(confirmPassword);
+When('the doctor completes the full registration process from fixture', () => {
+
+	cy.fixture('doctor.json').then((doctor) => {
+		cy.intercept('POST', '**/api/v1/auth/register/doctor').as('doctorSignup');
+
+		cy.clearCookies();
+		cy.clearLocalStorage();
+
+		// Step 1: Account credentials
+		doctorSignupPage.fillEmail(doctor.email);
+		doctorSignupPage.fillPassword(doctor.password);
+		doctorSignupPage.fillConfirmPassword(doctor.confirmPassword);
+		doctorSignupPage.clickNextButton();
+
+		// Wait for step 2 to load
+		doctorSignupPage.firstNameInput.should('be.visible');
+
+		// Step 2: Personal information
+		doctorSignupPage.fillFirstName(doctor.firstName);
+		doctorSignupPage.fillLastName(doctor.lastName);
+		doctorSignupPage.selectGender(doctor.gender);
+		doctorSignupPage.fillDateOfBirth(doctor.dateOfBirth);
+		doctorSignupPage.clickNextButton();
+
+		// Wait for step 3 to load
+		doctorSignupPage.phoneNumberInput.should('be.visible');
+
+		// Step 3: Professional information
+		doctorSignupPage.selectSpecialty(doctor.specialty);
+		doctorSignupPage.fillPhoneNumber(doctor.phoneNumber);
+		doctorSignupPage.fillBio(doctor.bio);
+		doctorSignupPage.clickConditionsAgreementButton();
+		doctorSignupPage.clickSubmitButton();
+
+		cy.wait('@doctorSignup', { timeout: 15000 }).then((interception) => {
+			expect(interception.response?.statusCode).to.eq(201);
+		});
+	});
 });
 
-When("clicks on the next button after entering email and password and confirm password", () => {
-	doctorSignupPage.clickNextButton();
-});
-
-Then("the doctor should see the next step after entering email and password and confirm password", () => {
-	// Assert on a field that only exists in step 2 to avoid hidden label issues
-	doctorSignupPage.firstNameInput.should('be.visible');
-});
-
-When("the doctor enters first name {string} and last name {string} and selects the gender {string} and selects the date of birth {string}", (firstName: string, lastName: string, gender: string, dateOfBirth: string) => {
-	doctorSignupPage.fillFirstName(firstName);
-	doctorSignupPage.fillLastName(lastName);
-	doctorSignupPage.selectGender(gender);
-	doctorSignupPage.fillDateOfBirth(dateOfBirth);
-});
-
-When("clicks on the next button", () => {
-	doctorSignupPage.clickNextButton();
-});
-
-Then("the doctor should see the next step", () => {
-	doctorSignupPage.phoneNumberInput.should('be.visible');
-});
-
-When(/^the doctor selects the specialty "([^"]+)" and enters (?:the )?phone number "([^"]+)" and writes the bio "([^"]+)" and clicks on the condtions agreement button$/, (specialty: string, phoneNumber: string, bio: string) => {
-	doctorSignupPage.selectSpecialty(specialty);
-	doctorSignupPage.fillPhoneNumber(phoneNumber);
-	doctorSignupPage.fillBio(bio);
-	doctorSignupPage.clickConditionsAgreementButton();
-});
-
-When("clicks on the submit button", () => {
-	doctorSignupPage.clickSubmitButton();
-});
-
-Then("the doctor should see the success message {string}", (successMessage: string) => {
-	cy.contains(successMessage).should('be.visible');
+Then('the doctor should be successfully registered and redirected to dashboard', () => {
+	cy.wait(7000);
+	cy.url().should('include', '/doctor-dashboard');
 });
