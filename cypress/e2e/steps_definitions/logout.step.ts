@@ -1,5 +1,5 @@
 import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { DoctorLogoutPage } from '../../support/pageObjects/LogoutPage';
+import { DoctorLogoutPage } from '../../support/pageObjects/Logout.page';
 
 const doctorLogoutPage = new DoctorLogoutPage();
 

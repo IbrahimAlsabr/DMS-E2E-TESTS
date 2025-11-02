@@ -1,13 +1,13 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { DoctorLoginPage } from '../../support/pageObjects/LoginPage';
+import { DoctorLoginPage } from '../../support/pageObjects/Login.page';
 
 const doctorLoginPage = new DoctorLoginPage();
 
 When('the doctor logs back in with stored credentials', () => {
-	
+
 	cy.visit('/doctor-login');
 	cy.url().should('include', '/doctor-login');
-	
+
 	cy.fixture('doctor.json').then((doctor) => {
 
 		cy.intercept('POST', '**/api/v1/auth/login').as('doctorLogin');

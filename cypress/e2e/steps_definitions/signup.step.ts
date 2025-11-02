@@ -1,6 +1,6 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { DoctorSignupPage } from '../../support/pageObjects/SignupPage';
-import { DoctorLoginPage } from '../../support/pageObjects/LoginPage';
+import { DoctorSignupPage } from '../../support/pageObjects/Signup.page';
+import { DoctorLoginPage } from '../../support/pageObjects/Login.page';
 
 const doctorSignupPage = new DoctorSignupPage();
 const doctorLoginPage = new DoctorLoginPage();

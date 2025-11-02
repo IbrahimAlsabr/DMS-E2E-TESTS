@@ -1,0 +1,18 @@
+	{
+		"newComplaint": "New complaint",
+		"historyOfIllness": "History of illness",
+		"symptoms": [
+			"Symptom 1",
+			"Symptom 2",
+			"Symptom 3"
+		],
+		"note": "Note",
+		"uploadFiles": [
+			"cypress/fixtures/files/file1.pdf",
+			"cypress/fixtures/files/file2.pdf"
+		],
+		"diagnosis": "Diagnosis",
+		"finalDiagnosis": "Final diagnosis",
+		"treatmentPlan": "Treatment plan",
+		"payment": 100
+	}
